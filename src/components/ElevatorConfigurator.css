@@ -1,0 +1,171 @@
+.configurator {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: 480px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  color: #1b1f24;
+  background: #f5f6f8;
+}
+
+@media (max-width: 900px) {
+  .configurator {
+    grid-template-columns: 1fr;
+    grid-template-rows: 55vh 1fr;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+.configurator__viewport {
+  position: relative;
+  min-height: 320px;
+  background: #eef1f4;
+}
+
+.configurator__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.configurator__panel {
+  overflow-y: auto;
+  padding: 20px 18px 60px;
+  background: #ffffff;
+  border-left: 1px solid #e3e6ea;
+}
+
+.configurator__panel-title {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.option-section {
+  border: 1px solid #e3e6ea;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.option-section__summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 600;
+  font-size: 14px;
+  background: #fafbfc;
+}
+
+.option-section__summary::-webkit-details-marker {
+  display: none;
+}
+
+.option-section__subtitle {
+  font-weight: 400;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.option-section__body {
+  padding: 12px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sub-option {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sub-option__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.swatch-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.swatch:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.swatch--selected {
+  border: 2px solid #2563eb;
+  box-shadow: 0 0 0 2px #ffffff inset;
+}
+
+.swatch__check {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.option-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.option-button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+  color: #1b1f24;
+}
+
+.option-button:hover {
+  border-color: #9ca3af;
+}
+
+.option-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
+}
+
+.option-button--selected {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
