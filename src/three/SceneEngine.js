@@ -38,6 +38,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { getHandrailLayout } from './handrailLayout';
 
 const MM_TO_M = 0.001;
 const WALL_THICKNESS = 0.06;
@@ -474,13 +475,16 @@ export default class SceneEngine {
       }
     }
 
-    if (handrail) {
+    const railLayout = getHandrailLayout(dims, { throughType, wallThickness: WALL_THICKNESS });
+    if (handrail && railLayout.visible) {
       const handrailMaterial = this.createMaterial(handrail.materialSpec, { metalness: 0.75, roughness: 0.25 });
-      const radius = 0.02;
-      const railLength = dims.depth * 0.6;
-      const rail = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, railLength, 24), handrailMaterial);
-      rail.rotation.z = Math.PI / 2;
-      rail.position.set(halfW - 0.05, dims.height * 0.45, 0);
+      const {
+        radius, length, rotation, position,
+      } = railLayout;
+      const railGeometry = new THREE.CylinderGeometry(radius, radius, length, 24);
+      const rail = new THREE.Mesh(railGeometry, handrailMaterial);
+      rail.rotation.set(rotation.x, rotation.y, rotation.z);
+      rail.position.set(position.x, position.y, position.z);
       meshes.push(rail);
     }
 
